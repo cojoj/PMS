@@ -1,0 +1,4 @@
+pms_projects:
+    resource: "@PmsProjectsBundle/Resources/config/routing.xml"
+    prefix:   /
+
