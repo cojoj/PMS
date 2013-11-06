@@ -3,48 +3,50 @@
 {% block title %}PmsProjectsBundle:Topic:add{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the Topic:add page</h1>
+    <h1>Welcome to the Jungle</h1>
     
     {{ form_start(form) }}
 
     {{ form_errors(form.subject) }}
     
     {# store the prototype on the data-prototype attribute #}
-    <a href="#" id="add-another-user">Add another user</a>
+    <a href="#" id="add-another-student">Add another student</a>
     
-    <ul id="user-fields-list" data-prototype="{{ form_widget(form.users.vars.prototype) | e }}">
-    {% for userField in form.users %}
+    <ul id="student-fields-list" data-prototype="{{ form_widget(form.students.vars.prototype) | e }}">
+    {% for studentField in form.students %}
         <li>
-            {{ form_errors(userField) }}
-            {{ form_widget(userField) }}
+            {{ form_errors(studentField) }}
+            {{ form_widget(studentField) }}
         </li>
     {% endfor %}
     </ul>
     
     {{ form_end(form) }}
+    
+    <a href="{{ url("index") }}">Powrót</a>
 
 {% endblock %}
 
 {% block javascripts %}
     <script type="text/javascript">
-        // keep track of how many user fields have been rendered
-        var userCount = '{{ form.users | length }}';
+        // keep track of how many student fields have been rendered
+        var studentCount = '{{ form.students | length }}';
 
         jQuery(document).ready(function() {
-            jQuery('#add-another-user').click(function() {
-                var userList = jQuery('#user-fields-list');
+            jQuery('#add-another-student').click(function() {
+                var studentList = jQuery('#student-fields-list');
 
                 // grab the prototype template
-                var newWidget = userList.attr('data-prototype');
+                var newWidget = studentList.attr('data-prototype');
                 // replace the "__name__" used in the id and name of the prototype
-                // with a number that's unique to your users
-                // end name attribute looks like name="contact[users][2]"
-                newWidget = newWidget.replace(/__name__/g, userCount);
-                userCount++;
+                // with a number that's unique to your students
+                // end name attribute looks like name="contact[students][2]"
+                newWidget = newWidget.replace(/__name__/g, studentCount);
+                studentCount++;
 
                 // create a new list element and add it to the list
                 var newLi = jQuery('<li></li>').html(newWidget);
-                newLi.appendTo(jQuery('#user-fields-list'));
+                newLi.appendTo(jQuery('#student-fields-list'));
 
                 return false;
             });

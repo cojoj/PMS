@@ -3,5 +3,31 @@
 {% block title %}PmsProjectsBundle:Main:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Main:index page</h1>
+    <h1>Welcome to the Jungle</h1>
+
+    <a href="{{ url('topic_add') }}">Dodaj projekt</a>
+
+    <h2>Awaiting projects</h2>
+    <ul>
+    {% for project in project.awaiting %}
+        <li>{{ project.subject }} - {{ project.lecturer.name }}</li>
+    {% endfor %}
+    </ul>
+    
+    <h2>Accepted projects</h2>
+    <ul>
+    {% for project in project.accepted %}
+        <li>{{ project.subject }} - {{ project.lecturer.name }}</li>
+    {% endfor %}
+    </ul>
+    
+    <h2>Canceled projects</h2>
+    <ul>
+    {% for project in project.canceled %}
+        <li>{{ project.subject }} - {{ project.lecturer.name }}</li>
+    {% endfor %}
+    </ul>
+    
+    <a href="{{ url('topic_add') }}">Dodaj projekt</a>
+
 {% endblock %}
