@@ -105,4 +105,116 @@ class Project
     {
         $this->status = $status;
     }
+    /**
+     * @var \DateTime
+     */
+    private $entry_date;
+
+    /**
+     * @var \DateTime
+     */
+    private $change_date;
+
+    /**
+     * @var strnig
+     */
+    private $comment;
+
+    /**
+     * @var \Pms\Bundle\ProjectsBundle\Entity\Team
+     */
+    private $team;
+
+
+    /**
+     * Set entry_date
+     *
+     * @param \DateTime $entryDate
+     * @return Project
+     */
+    public function setEntryDate($entryDate)
+    {
+        $this->entry_date = $entryDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get entry_date
+     *
+     * @return \DateTime 
+     */
+    public function getEntryDate()
+    {
+        return $this->entry_date;
+    }
+
+    /**
+     * Set change_date
+     *
+     * @param \DateTime $changeDate
+     * @return Project
+     */
+    public function setChangeDate($changeDate)
+    {
+        $this->change_date = $changeDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get change_date
+     *
+     * @return \DateTime 
+     */
+    public function getChangeDate()
+    {
+        return $this->change_date;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param \strnig $comment
+     * @return Project
+     */
+    public function setComment(\strnig $comment)
+    {
+        $this->comment = $comment;
+    
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \strnig 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set team
+     *
+     * @param \Pms\Bundle\ProjectsBundle\Entity\Team $team
+     * @return Project
+     */
+    public function setTeam(\Pms\Bundle\ProjectsBundle\Entity\Team $team = null)
+    {
+        $this->team = $team;
+    
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return \Pms\Bundle\ProjectsBundle\Entity\Team 
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
 }

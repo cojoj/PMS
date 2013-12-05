@@ -7,5 +7,9 @@
     <field name="subject" column="subject" type="string" length="200"/>
     <field name="status" column="status" type="string" length="10"/>
     <one-to-one field="lecturer" target-entity="Pms\Bundle\ProjectsBundle\Entity\Lecturer" inversed-by="project"/>
+    <field name="entry_date" column="entry_date" type="string" />
+    <field name="change_date" column="change_date" type="string" nullable="true"/>
+    <field name="comment" column="comment" type="string" length="300" nullable="true"/>
+    <one-to-one field="team" target-entity="Pms\Bundle\ProjectsBundle\Entity\Team" inversed-by="project"/>
   </entity>
 </doctrine-mapping>

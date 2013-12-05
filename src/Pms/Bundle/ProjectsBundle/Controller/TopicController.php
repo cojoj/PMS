@@ -48,7 +48,9 @@ class TopicController extends Controller
                     $student->setName($studentName);
                     $team->addStudent($student);
                 }
-
+                
+                $project->setTeam($team);
+                $project->setEntryDate(date('d-j-Y'));
                 $em = $this->getDoctrine()->getManager();
                 
                 $em->persist($project);
@@ -56,6 +58,8 @@ class TopicController extends Controller
                 $em->persist($team);
                 
                 $em->flush();
+                
+                return $this->redirect("/");
             }
         }
         
@@ -74,5 +78,23 @@ class TopicController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($project);        
         $em->flush();
+    }
+    
+    public function acceptAction($id){
+        $project = $this->getDoctrine()->getRepository('PmsProjectsBundle:Project')->find($id);
+        $project->setStatus(Entity\Status::ACCEPTED);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($project);        
+        $em->flush();
+        return $this->redirect("/");
+    }
+    
+    public function cancelAction($id){
+        $project = $this->getDoctrine()->getRepository('PmsProjectsBundle:Project')->find($id);
+        $project->setStatus(Entity\Status::CANCELED);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($project);        
+        $em->flush();
+        return $this->redirect("/");
     }
 }

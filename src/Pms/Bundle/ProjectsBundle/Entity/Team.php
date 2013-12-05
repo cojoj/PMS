@@ -64,4 +64,32 @@ class Team
     {
         return $this->students;
     }
+    /**
+     * @var \Pms\Bundle\ProjectsBundle\Entity\Project
+     */
+    private $project;
+
+
+    /**
+     * Set project
+     *
+     * @param \Pms\Bundle\ProjectsBundle\Entity\Project $project
+     * @return Team
+     */
+    public function setProject(\Pms\Bundle\ProjectsBundle\Entity\Project $project = null)
+    {
+        $this->project = $project;
+    
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \Pms\Bundle\ProjectsBundle\Entity\Project 
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
 }

@@ -3,21 +3,28 @@
 {% block title %}PmsProjectsBundle:Main:index{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the Jungle</h1>
+    <h1>Projects Management Service</h1>
 
     <a href="{{ url('topic_add') }}">Dodaj projekt</a>
 
     <h2>Awaiting projects</h2>
-    <ul>
+    <table border="1">
+        <tr>
+        <th>subject</th>
+        <th>lecturer</th>
+        <th>entry date</th>
+        <th>action</th>
+        <th>students</th>
+        </tr>
     {% for project in project.awaiting %}
-        <li>{{ project.subject }} - {{ project.lecturer.name }}</li>
+        <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('accept', {'id' : project.id}) }}">accept</a> <br/> <a href="{{path('cancel', {'id' : project.id}) }}">cancel</a></td><td>{{ project.team.id }}</td></tr>
     {% endfor %}
-    </ul>
+    </table>
     
     <h2>Accepted projects</h2>
     <ul>
     {% for project in project.accepted %}
-        <li>{{ project.subject }} - {{ project.lecturer.name }}</li>
+        <li>{{ project.subject }} - {{ project.lecturer.name }} </li>
     {% endfor %}
     </ul>
     

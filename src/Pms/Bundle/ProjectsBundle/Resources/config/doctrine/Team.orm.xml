@@ -9,5 +9,6 @@
             <cascade-all/>
         </cascade>
     </many-to-many>
+    <one-to-one field="project" target-entity="Pms\Bundle\ProjectsBundle\Entity\Project" mapped-by="lecturer" />
   </entity>
 </doctrine-mapping>

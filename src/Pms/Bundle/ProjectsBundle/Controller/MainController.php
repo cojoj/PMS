@@ -11,9 +11,14 @@ class MainController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('PmsProjectsBundle:Project');
         $project = new \stdClass();
+//        $project = new Entity\Project();
         $project->awaiting = $repo->findBy(['status' => Entity\Status::AWAITING]);
         $project->accepted = $repo->findBy(['status' => Entity\Status::ACCEPTED]);
         $project->canceled = $repo->findBy(['status' => Entity\Status::CANCELED]);
+//        $ID = $this->getDoctrine()->getRepository('PmsProjectsBundle:Team')->find($project->getTeam());
+        
+        
+        
         
         return $this->render(
             'PmsProjectsBundle:Main:index.html.twig',
