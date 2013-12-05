@@ -6,10 +6,7 @@
   <route id="topic_add" pattern="/topic/add">
     <default key="_controller">PmsProjectsBundle:Topic:add</default>
   </route>
-  <route id="accept" pattern="/accept/{id}">
-      <default key="_controller">PmsProjectsBundle:Topic:accept</default>
-  </route>
-  <route id="cancel" pattern="/cancel/{id}">
-      <default key="_controller">PmsProjectsBundle:Topic:cancel</default>
+  <route id="changeStatus" pattern="/accept/{id}">
+      <default key="_controller">PmsProjectsBundle:Topic:changeStatus</default>
   </route>
 </routes>

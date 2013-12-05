@@ -178,7 +178,7 @@ class Project
      * @param \strnig $comment
      * @return Project
      */
-    public function setComment(\strnig $comment)
+    public function setComment($comment)
     {
         $this->comment = $comment;
     
@@ -188,7 +188,7 @@ class Project
     /**
      * Get comment
      *
-     * @return \strnig 
+     * @return string 
      */
     public function getComment()
     {

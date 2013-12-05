@@ -31,9 +31,10 @@
     <script type="text/javascript">
         // keep track of how many student fields have been rendered
         var studentCount = '{{ form.students | length }}';
-
+        
         jQuery(document).ready(function() {
             jQuery('#add-another-student').click(function() {
+                if(studentCount < 3){
                 var studentList = jQuery('#student-fields-list');
 
                 // grab the prototype template
@@ -47,7 +48,7 @@
                 // create a new list element and add it to the list
                 var newLi = jQuery('<li></li>').html(newWidget);
                 newLi.appendTo(jQuery('#student-fields-list'));
-
+            }
                 return false;
             });
         })

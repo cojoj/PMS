@@ -3,38 +3,53 @@
 {% block title %}PmsProjectsBundle:Main:index{% endblock %}
 
 {% block body %}
-    <h1>Projects Management Service</h1>
+<h1>Projects Management Service</h1>
 
-    <a href="{{ url('topic_add') }}">Dodaj projekt</a>
+<a href="{{ url('topic_add') }}">Dodaj projekt</a>
 
-    <h2>Awaiting projects</h2>
-    <table border="1">
-        <tr>
+<h2>Awaiting projects</h2>
+<table border="1px solid">
+    <tr>
         <th>subject</th>
         <th>lecturer</th>
         <th>entry date</th>
         <th>action</th>
         <th>students</th>
-        </tr>
+    </tr>
     {% for project in project.awaiting %}
-        <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('accept', {'id' : project.id}) }}">accept</a> <br/> <a href="{{path('cancel', {'id' : project.id}) }}">cancel</a></td><td>{{ project.team.id }}</td></tr>
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('changeStatus', {'id' : project.id}) }}">change</a></td><td>{{ project.team.id }}</td></tr>
     {% endfor %}
-    </table>
-    
-    <h2>Accepted projects</h2>
-    <ul>
+</table>
+
+<h2>Accepted projects</h2>
+<table border="1px solid">
+    <tr>
+        <th>subject</th>
+        <th>lecturer</th>
+        <th>entry date</th>
+        <th>change datet</th>
+        <th>comment</th>
+    </tr>
     {% for project in project.accepted %}
-        <li>{{ project.subject }} - {{ project.lecturer.name }} </li>
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td></tr>
     {% endfor %}
-    </ul>
-    
-    <h2>Canceled projects</h2>
-    <ul>
+</table>
+
+<h2>Canceled projects</h2>
+<table border="1px solid">
+    <tr>
+        <th>subject</th>
+        <th>lecturer</th>
+        <th>entry date</th>
+        <th>change datet</th>
+        <th>comment</th>
+    </tr>
     {% for project in project.canceled %}
-        <li>{{ project.subject }} - {{ project.lecturer.name }}</li>
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td></tr>
     {% endfor %}
-    </ul>
-    
-    <a href="{{ url('topic_add') }}">Dodaj projekt</a>
+</table>
+
+<br/>
+<a href="{{ url('topic_add') }}">Dodaj projekt</a>
 
 {% endblock %}
