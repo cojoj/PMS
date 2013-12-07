@@ -48,7 +48,7 @@ class TopicController extends Controller {
                 }
 
                 $project->setTeam($team);
-                $project->setEntryDate(date('d-j-Y'));
+                $project->setEntryDate(date('d-m-Y H:i:s'));
                 $em = $this->getDoctrine()->getManager();
 
                 $em->persist($project);
@@ -72,6 +72,7 @@ class TopicController extends Controller {
     public function changeStatusAction($id, Request $request) {
         $form = $this->createFormBuilder()
                 ->add('comment', 'textarea')
+                ->add('password', 'password')
                 ->add('accept', 'submit')
                 ->add('reject', 'submit')
                 ->getForm();
@@ -79,6 +80,8 @@ class TopicController extends Controller {
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
+                $password = "gargamel";
+                if($form->get('password')->getData() === $password){
                 $project = $this->getDoctrine()->getRepository('PmsProjectsBundle:Project')->find($id);
                 if ($form->get('accept')->isClicked()) {
                     $project->setStatus(Entity\Status::ACCEPTED);
@@ -86,11 +89,14 @@ class TopicController extends Controller {
                     $project->setStatus(Entity\Status::CANCELED);
                 }
                 $project->setComment($form->get('comment')->getData());
-                $project->setChangeDate(date('d-j-Y'));
+                $project->setChangeDate(date('d-m-Y H:i:s'));
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($project);
                 $em->flush();
                 return $this->redirect("/");
+                
+                }
+                return $this->render('PmsProjectsBundle:Topic:wrongPassword.html.twig');                             // TO DO 
             }
         } else {
             return $this->render('PmsProjectsBundle:Topic:actionForm.html.twig', array('form' => $form->createView()));

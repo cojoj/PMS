@@ -50,13 +50,14 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
         <th>entry date</th>
         <th>action</th>
         <th>students</th>
+        <th>status</th>
     </tr>
     ";
-        // line 19
+        // line 20
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "awaiting"));
         foreach ($context['_seq'] as $context["_key"] => $context["project"]) {
-            // line 20
+            // line 21
             echo "    <tr><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "subject"), "html", null, true);
             echo " </td><td> ";
@@ -67,13 +68,15 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("changeStatus", array("id" => $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "id"))), "html", null, true);
             echo "\">change</a></td><td>";
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("PmsProjectsBundle:Topic:studentList", array("teamId" => $this->getAttribute($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "team"), "id"))));
+            echo "</td><td>";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "status"), "html", null, true);
             echo "</td></tr>
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['project'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
+        // line 23
         echo "</table>
 
 <h2>Accepted projects</h2>
@@ -85,13 +88,14 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
         <th>change datet</th>
         <th>comment</th>
         <th>students</th>
+        <th>status</th>
     </tr>
     ";
-        // line 34
+        // line 36
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "accepted"));
         foreach ($context['_seq'] as $context["_key"] => $context["project"]) {
-            // line 35
+            // line 37
             echo "    <tr><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "subject"), "html", null, true);
             echo " </td><td> ";
@@ -104,13 +108,15 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "comment"), "html", null, true);
             echo "</td><td>";
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("PmsProjectsBundle:Topic:studentList", array("teamId" => $this->getAttribute($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "team"), "id"))));
+            echo "</td><td>";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "status"), "html", null, true);
             echo "</td></tr>
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['project'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 37
+        // line 39
         echo "</table>
 
 <h2>Canceled projects</h2>
@@ -122,13 +128,14 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
         <th>change datet</th>
         <th>comment</th>
         <th>students</th>
+        <th>status</th>
     </tr>
     ";
-        // line 49
+        // line 52
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "canceled"));
         foreach ($context['_seq'] as $context["_key"] => $context["project"]) {
-            // line 50
+            // line 53
             echo "    <tr><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "subject"), "html", null, true);
             echo " </td><td> ";
@@ -141,18 +148,20 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "comment"), "html", null, true);
             echo "</td><td>";
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("PmsProjectsBundle:Topic:studentList", array("teamId" => $this->getAttribute($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "team"), "id"))));
+            echo "</td><td>";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "status"), "html", null, true);
             echo "</td></tr>
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['project'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 52
+        // line 55
         echo "</table>
 
 <br/>
 <a href=\"";
-        // line 55
+        // line 58
         echo $this->env->getExtension('routing')->getUrl("topic_add");
         echo "\">Dodaj projekt</a>
 
@@ -171,6 +180,6 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
 
     public function getDebugInfo()
     {
-        return array (  156 => 55,  151 => 52,  132 => 50,  128 => 49,  114 => 37,  95 => 35,  91 => 34,  77 => 22,  60 => 20,  56 => 19,  42 => 8,  38 => 6,  35 => 5,  29 => 3,);
+        return array (  165 => 58,  160 => 55,  139 => 53,  135 => 52,  120 => 39,  99 => 37,  95 => 36,  80 => 23,  61 => 21,  57 => 20,  42 => 8,  38 => 6,  35 => 5,  29 => 3,);
     }
 }
