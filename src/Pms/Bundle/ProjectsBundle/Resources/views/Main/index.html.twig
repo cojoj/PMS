@@ -17,7 +17,7 @@
         <th>students</th>
     </tr>
     {% for project in project.awaiting %}
-    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('changeStatus', {'id' : project.id}) }}">change</a></td><td>{{ project.team.id }}</td></tr>
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('changeStatus', {'id' : project.id}) }}">change</a></td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td></tr>
     {% endfor %}
 </table>
 
@@ -29,9 +29,10 @@
         <th>entry date</th>
         <th>change datet</th>
         <th>comment</th>
+        <th>students</th>
     </tr>
     {% for project in project.accepted %}
-    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td></tr>
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td></tr>
     {% endfor %}
 </table>
 
@@ -43,9 +44,10 @@
         <th>entry date</th>
         <th>change datet</th>
         <th>comment</th>
+        <th>students</th>
     </tr>
     {% for project in project.canceled %}
-    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td></tr>
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td></tr>
     {% endfor %}
 </table>
 

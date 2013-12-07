@@ -98,6 +98,20 @@ class TopicController extends Controller {
 
 
     }
+    
+    public function studentListAction($teamId){
+        $em = $this->getDoctrine()->getEntityManager();
+        $query = $em->createQuery('Select s.name from Pms\Bundle\ProjectsBundle\Entity\Student  s where s.id in (select t.studentId from Pms\Bundle\ProjectsBundle\Entity\TeamStudent t where t.teamId = :teamId)')
+                ->setParameter('teamId', $teamId);
+        $result = $query->getResult();
+ 
+        
+         
+        return $this->render('PmsProjectsBundle:Topic:teamList.html.twig', array('students' => $result));
+        
+        
+        
+    }
 
     
 
