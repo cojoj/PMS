@@ -16,7 +16,7 @@ class __TwigTemplate_6fa4764adc58f9de63eed349bb02f4a89debab5500248a9909838417663
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 2
-        echo "Sorry, given password is not correct.
+        echo "Sorry, given password is not correct.<br/>
 <a href=\"";
         // line 3
         echo $this->env->getExtension('routing')->getUrl("index");

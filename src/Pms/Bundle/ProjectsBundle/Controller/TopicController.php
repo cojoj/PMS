@@ -24,7 +24,8 @@ class TopicController extends Controller {
                 ->add('students', 'collection', array(
                     'type' => 'text',
                     'mapped' => false,
-                    'allow_add' => true
+                    'allow_add' => true,
+                    'label' => false
                 ))
                 ->add('save', 'submit')
                 ->getForm();
