@@ -152,6 +152,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'changeStatus')), array (  '_controller' => 'Pms\\Bundle\\ProjectsBundle\\Controller\\TopicController::changeStatusAction',));
         }
 
+        // deleteProject
+        if (0 === strpos($pathinfo, '/delete') && preg_match('#^/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'deleteProject')), array (  '_controller' => 'Pms\\Bundle\\ProjectsBundle\\Controller\\TopicController::deleteProjectAction',));
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

@@ -66,7 +66,9 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "entryDate"), "html", null, true);
             echo "</td><td> <a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("changeStatus", array("id" => $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "id"))), "html", null, true);
-            echo "\">change</a></td><td>";
+            echo "\">change</a><br/><a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("deleteProject", array("id" => $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "id"))), "html", null, true);
+            echo "\">remove</a></td><td>";
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("PmsProjectsBundle:Topic:studentList", array("teamId" => $this->getAttribute($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "team"), "id"))));
             echo "</td><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "status"), "html", null, true);
@@ -180,6 +182,6 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
 
     public function getDebugInfo()
     {
-        return array (  165 => 58,  160 => 55,  139 => 53,  135 => 52,  120 => 39,  99 => 37,  95 => 36,  80 => 23,  61 => 21,  57 => 20,  42 => 8,  38 => 6,  35 => 5,  29 => 3,);
+        return array (  167 => 58,  162 => 55,  141 => 53,  137 => 52,  122 => 39,  101 => 37,  97 => 36,  82 => 23,  61 => 21,  57 => 20,  42 => 8,  38 => 6,  35 => 5,  29 => 3,);
     }
 }

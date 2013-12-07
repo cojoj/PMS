@@ -33,6 +33,7 @@ class appDevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         'index' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Pms\\Bundle\\ProjectsBundle\\Controller\\MainController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),),
         'topic_add' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Pms\\Bundle\\ProjectsBundle\\Controller\\TopicController::addAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/topic/add',    ),  ),  4 =>   array (  ),),
         'changeStatus' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Pms\\Bundle\\ProjectsBundle\\Controller\\TopicController::changeStatusAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    1 =>     array (      0 => 'text',      1 => '/accept',    ),  ),  4 =>   array (  ),),
+        'deleteProject' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Pms\\Bundle\\ProjectsBundle\\Controller\\TopicController::deleteProjectAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    1 =>     array (      0 => 'text',      1 => '/delete',    ),  ),  4 =>   array (  ),),
     );
 
     /**

@@ -68,7 +68,6 @@ class TopicController extends Controller {
                         )
         );
     }
- 
 
     public function changeStatusAction($id, Request $request) {
         $form = $this->createFormBuilder()
@@ -82,44 +81,61 @@ class TopicController extends Controller {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $password = "gargamel";
-                if($form->get('password')->getData() === $password){
-                $project = $this->getDoctrine()->getRepository('PmsProjectsBundle:Project')->find($id);
-                if ($form->get('accept')->isClicked()) {
-                    $project->setStatus(Entity\Status::ACCEPTED);
-                } elseif ($form->get('reject')->isClicked()) {
-                    $project->setStatus(Entity\Status::CANCELED);
-                }
-                $project->setComment($form->get('comment')->getData());
-                $project->setChangeDate(date('d-m-Y H:i:s'));
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($project);
-                $em->flush();
-                return $this->redirect("/");
-                
+                if ($form->get('password')->getData() === $password) {
+                    $project = $this->getDoctrine()->getRepository('PmsProjectsBundle:Project')->find($id);
+                    if ($form->get('accept')->isClicked()) {
+                        $project->setStatus(Entity\Status::ACCEPTED);
+                    } elseif ($form->get('reject')->isClicked()) {
+                        $project->setStatus(Entity\Status::CANCELED);
+                    }
+                    $project->setComment($form->get('comment')->getData());
+                    $project->setChangeDate(date('d-m-Y H:i:s'));
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($project);
+                    $em->flush();
+                    return $this->redirect("/");
                 }
                 return $this->render('PmsProjectsBundle:Topic:wrongPassword.html.twig');                             // TO DO 
             }
         } else {
             return $this->render('PmsProjectsBundle:Topic:actionForm.html.twig', array('form' => $form->createView()));
         }
-
-
     }
-    
-    public function studentListAction($teamId){
+
+    public function studentListAction($teamId) {
         $em = $this->getDoctrine()->getEntityManager();
         $query = $em->createQuery('Select s.name from Pms\Bundle\ProjectsBundle\Entity\Student  s where s.id in (select t.studentId from Pms\Bundle\ProjectsBundle\Entity\TeamStudent t where t.teamId = :teamId)')
                 ->setParameter('teamId', $teamId);
         $result = $query->getResult();
- 
-        
-         
+
+
+
         return $this->render('PmsProjectsBundle:Topic:teamList.html.twig', array('students' => $result));
-        
-        
-        
     }
 
-    
+    public function deleteProjectAction($id, Request $request) {
+        $form = $this->createFormBuilder()
+                ->add('password', 'password')
+                ->add('delete', 'submit')
+                ->getForm();
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $password = "gargamel";
+                if ($form->get('password')->getData() === $password) {
+                    $project = $this->getDoctrine()->getRepository('PmsProjectsBundle:Project')->find($id);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->remove($project);
+                    $em->flush();
+                    return $this->redirect("/");
+                }else{
+                    return $this->render('PmsProjectsBundle:Topic:wrongPassword.html.twig');
+                }
+            }
+        }else {
+                return $this->render('PmsProjectsBundle:Topic:deleteForm.html.twig', array('form' => $form->createView()));
+            }
+        
+    }
 
 }

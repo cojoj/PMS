@@ -18,7 +18,7 @@
         <th>status</th>
     </tr>
     {% for project in project.awaiting %}
-    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('changeStatus', {'id' : project.id}) }}">change</a></td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('changeStatus', {'id' : project.id}) }}">change</a><br/><a href="{{ path('deleteProject', {'id' : project.id}) }}">remove</a></td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
     {% endfor %}
 </table>
 

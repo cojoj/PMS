@@ -9,4 +9,7 @@
   <route id="changeStatus" pattern="/accept/{id}">
       <default key="_controller">PmsProjectsBundle:Topic:changeStatus</default>
   </route>
+  <route id="deleteProject" pattern="/delete/{id}">
+      <default key="_controller">PmsProjectsBundle:Topic:deleteProject</default>
+  </route>
 </routes>
