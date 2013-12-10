@@ -65,6 +65,44 @@
             {% endfor %}
         </table>
 
+<<<<<<< HEAD
+</body>
+</html>
 
+=======
+<h2>Accepted projects</h2>
+<table border="1px solid">
+    <tr>
+        <th>subject</th>
+        <th>lecturer</th>
+        <th>entry date</th>
+        <th>change date</th>
+        <th>comment</th>
+        <th>students</th>
+        <th>status</th>
+    </tr>
+    {% for project in project.accepted %}
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
+    {% endfor %}
+</table>
+
+<h2>Canceled projects</h2>
+<table border="1px solid">
+    <tr>
+        <th>subject</th>
+        <th>lecturer</th>
+        <th>entry date</th>
+        <th>change date</th>
+        <th>comment</th>
+        <th>students</th>
+        <th>status</th>
+    </tr>
+    {% for project in project.canceled %}
+    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
+    {% endfor %}
+</table>
+
+<br/>
+<a href="{{ url('topic_add') }}">Dodaj projekt</a>
 
 
