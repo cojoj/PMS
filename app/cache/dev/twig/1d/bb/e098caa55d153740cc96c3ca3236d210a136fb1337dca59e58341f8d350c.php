@@ -7,58 +7,60 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::base.html.twig");
+        $this->parent = false;
 
         $this->blocks = array(
-            'title' => array($this, 'block_title'),
-            'body' => array($this, 'block_body'),
         );
-    }
-
-    protected function doGetParent(array $context)
-    {
-        return "::base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $this->parent->display($context, array_merge($this->blocks, $blocks));
-    }
+        // line 1
+        echo "<html>
+    <head>
+        <title>PMS</title>
+        <link href=\"";
+        // line 4
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("style.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\" type=\"text/css\" />
+    </head>
+    <body bgcolor='#F0F0F0'>
+        <center><h1 align='center'><b>Projects Management Service</b></h1></center>
 
-    // line 3
-    public function block_title($context, array $blocks = array())
-    {
-        echo "PmsProjectsBundle:Main:index";
-    }
+        <hr>
+        
+        <h2><img src=\"";
+        // line 11
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("tools.png"), "html", null, true);
+        echo "\" />  Tools</h2>
 
-    // line 5
-    public function block_body($context, array $blocks = array())
-    {
-        // line 6
-        echo "<h1>Projects Management Service</h1>
-
-<a href=\"";
-        // line 8
+        <a href=\"";
+        // line 13
         echo $this->env->getExtension('routing')->getUrl("topic_add");
-        echo "\">Dodaj projekt</a>
-
-<h2>Awaiting projects</h2>
-<table border=\"1px solid\">
-    <tr>
-        <th>subject</th>
-        <th>lecturer</th>
-        <th>entry date</th>
-        <th>action</th>
-        <th>students</th>
-        <th>status</th>
-    </tr>
-    ";
-        // line 20
+        echo "\" title='Add project' class=\"btn\">Add project</a>
+            <br><br>
+        <hr>
+            
+        <h2><img src=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("wait.png"), "html", null, true);
+        echo "\" />   Awaiting projects</h2>
+        <table id=\"hor-minimalist-a\">
+            <tr>
+                <th>subject</th>
+                <th>lecturer</th>
+                <th>entry date</th>
+                <th>action</th>
+                <th>students</th>
+                <th>status</th>
+            </tr>
+            ";
+        // line 27
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "awaiting"));
         foreach ($context['_seq'] as $context["_key"] => $context["project"]) {
-            // line 21
-            echo "    <tr><td>";
+            // line 28
+            echo "            <tr><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "subject"), "html", null, true);
             echo " </td><td> ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "lecturer"), "name"), "html", null, true);
@@ -66,39 +68,48 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "entryDate"), "html", null, true);
             echo "</td><td> <a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("changeStatus", array("id" => $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "id"))), "html", null, true);
-            echo "\">change</a><br/><a href=\"";
+            echo "\"><img src=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("edit.png"), "html", null, true);
+            echo "\" Title='Edit'/></a><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("deleteProject", array("id" => $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "id"))), "html", null, true);
-            echo "\">remove</a></td><td>";
+            echo "\"><img src=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("delete.png"), "html", null, true);
+            echo "\" Title='Remove'/></a></td><td>";
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("PmsProjectsBundle:Topic:studentList", array("teamId" => $this->getAttribute($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "team"), "id"))));
             echo "</td><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "status"), "html", null, true);
             echo "</td></tr>
-    ";
+            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['project'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 23
-        echo "</table>
+        // line 30
+        echo "        </table>
 
-<h2>Accepted projects</h2>
-<table border=\"1px solid\">
-    <tr>
-        <th>subject</th>
-        <th>lecturer</th>
-        <th>entry date</th>
-        <th>change datet</th>
-        <th>comment</th>
-        <th>students</th>
-        <th>status</th>
-    </tr>
-    ";
-        // line 36
+        <br><hr>
+        
+        <h2><img src=\"";
+        // line 34
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("accepted.png"), "html", null, true);
+        echo "\" />  Accepted projects</h2>
+        <table id=\"hor-minimalist-a\">
+            <tr>
+                <th>subject</th>
+                <th>lecturer</th>
+                <th>entry date</th>
+                <th>change datet</th>
+                <th>comment</th>
+                <th>students</th>
+                <th>status</th>
+            </tr>
+            ";
+        // line 45
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "accepted"));
         foreach ($context['_seq'] as $context["_key"] => $context["project"]) {
-            // line 37
-            echo "    <tr><td>";
+            // line 46
+            echo "            <tr><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "subject"), "html", null, true);
             echo " </td><td> ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "lecturer"), "name"), "html", null, true);
@@ -113,32 +124,37 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
             echo "</td><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "status"), "html", null, true);
             echo "</td></tr>
-    ";
+            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['project'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
-        echo "</table>
+        // line 48
+        echo "        </table>
 
-<h2>Canceled projects</h2>
-<table border=\"1px solid\">
-    <tr>
-        <th>subject</th>
-        <th>lecturer</th>
-        <th>entry date</th>
-        <th>change datet</th>
-        <th>comment</th>
-        <th>students</th>
-        <th>status</th>
-    </tr>
-    ";
+         <br><hr>
+        
+        <h2><img src=\"";
         // line 52
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("removed.png"), "html", null, true);
+        echo "\" />  Canceled projects</h2>
+        <table id=\"hor-minimalist-a\">
+            <tr>
+                <th>subject</th>
+                <th>lecturer</th>
+                <th>entry date</th>
+                <th>change datet</th>
+                <th>comment</th>
+                <th>students</th>
+                <th>status</th>
+            </tr>
+            ";
+        // line 63
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "canceled"));
         foreach ($context['_seq'] as $context["_key"] => $context["project"]) {
-            // line 53
-            echo "    <tr><td>";
+            // line 64
+            echo "            <tr><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "subject"), "html", null, true);
             echo " </td><td> ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "lecturer"), "name"), "html", null, true);
@@ -153,19 +169,16 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
             echo "</td><td>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["project"]) ? $context["project"] : $this->getContext($context, "project")), "status"), "html", null, true);
             echo "</td></tr>
-    ";
+            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['project'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 55
-        echo "</table>
+        // line 66
+        echo "        </table>
 
-<br/>
-<a href=\"";
-        // line 58
-        echo $this->env->getExtension('routing')->getUrl("topic_add");
-        echo "\">Dodaj projekt</a>
+</body>
+</html>
 
 ";
     }
@@ -182,6 +195,6 @@ class __TwigTemplate_1dbbe098caa55d153740cc96c3ca3236d210a136fb1337dca59e58341f8
 
     public function getDebugInfo()
     {
-        return array (  167 => 58,  162 => 55,  141 => 53,  137 => 52,  122 => 39,  101 => 37,  97 => 36,  82 => 23,  61 => 21,  57 => 20,  42 => 8,  38 => 6,  35 => 5,  29 => 3,);
+        return array (  178 => 66,  157 => 64,  153 => 63,  139 => 52,  133 => 48,  112 => 46,  108 => 45,  94 => 34,  88 => 30,  63 => 28,  59 => 27,  46 => 17,  39 => 13,  34 => 11,  24 => 4,  19 => 1,);
     }
 }

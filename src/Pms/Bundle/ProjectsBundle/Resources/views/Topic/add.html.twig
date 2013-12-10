@@ -1,16 +1,19 @@
+
 {% extends "::base.html.twig" %}
+
 
 {% block title %}PmsProjectsBundle:Topic:add{% endblock %}
 
 {% block body %}
+
     <h1>Add Project</h1>
     
-    {{ form_start(form) }}
+        {{ form_start(form) }}
 
-    {{ form_errors(form.subject) }}
+        {{ form_errors(form.subject) }}
     
     {# store the prototype on the data-prototype attribute #}
-    <a href="#" id="add-another-student">Add another student</a>
+    <a href="#" id="add-another-student" class="btn">Add another student</a><br><br><hr>
     
     <ul id="student-fields-list" data-prototype="{{ form_widget(form.students.vars.prototype) | e }}">
     {% for studentField in form.students %}
@@ -23,10 +26,11 @@
     
     {{ form_end(form) }}
     
-    <a href="{{ url("index") }}">Powrót</a>
+    <br><hr><br><a href="{{ url("index") }}" class="btn">Powrót</a>
 
 {% endblock %}
-
+    
+    
 {% block javascripts %}
     <script type="text/javascript">
         // keep track of how many student fields have been rendered

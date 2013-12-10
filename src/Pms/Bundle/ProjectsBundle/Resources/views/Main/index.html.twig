@@ -1,60 +1,70 @@
-{% extends "::base.html.twig" %}
+<html>
+    <head>
+        <title>PMS</title>
+        <link href="{{ asset('style.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+    <body bgcolor='#F0F0F0'>
+        <center><h1 align='center'><b>Projects Management Service</b></h1></center>
 
-{% block title %}PmsProjectsBundle:Main:index{% endblock %}
+        <hr>
+        
+        <h2><img src="{{ asset('tools.png') }}" />  Tools</h2>
 
-{% block body %}
-<h1>Projects Management Service</h1>
+        <a href="{{ url('topic_add') }}" title='Add project' class="btn">Add project</a>
+            <br><br>
+        <hr>
+            
+        <h2><img src="{{ asset('wait.png') }}" />   Awaiting projects</h2>
+        <table id="hor-minimalist-a">
+            <tr>
+                <th>subject</th>
+                <th>lecturer</th>
+                <th>entry date</th>
+                <th>action</th>
+                <th>students</th>
+                <th>status</th>
+            </tr>
+            {% for project in project.awaiting %}
+            <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('changeStatus', {'id' : project.id}) }}"><img src="{{ asset('edit.png') }}" Title='Edit'/></a><a href="{{ path('deleteProject', {'id' : project.id}) }}"><img src="{{ asset('delete.png') }}" Title='Remove'/></a></td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
+            {% endfor %}
+        </table>
 
-<a href="{{ url('topic_add') }}">Dodaj projekt</a>
+        <br><hr>
+        
+        <h2><img src="{{ asset('accepted.png') }}" />  Accepted projects</h2>
+        <table id="hor-minimalist-a">
+            <tr>
+                <th>subject</th>
+                <th>lecturer</th>
+                <th>entry date</th>
+                <th>change datet</th>
+                <th>comment</th>
+                <th>students</th>
+                <th>status</th>
+            </tr>
+            {% for project in project.accepted %}
+            <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
+            {% endfor %}
+        </table>
 
-<h2>Awaiting projects</h2>
-<table border="1px solid">
-    <tr>
-        <th>subject</th>
-        <th>lecturer</th>
-        <th>entry date</th>
-        <th>action</th>
-        <th>students</th>
-        <th>status</th>
-    </tr>
-    {% for project in project.awaiting %}
-    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td> <a href="{{ path('changeStatus', {'id' : project.id}) }}">change</a><br/><a href="{{ path('deleteProject', {'id' : project.id}) }}">remove</a></td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
-    {% endfor %}
-</table>
+         <br><hr>
+        
+        <h2><img src="{{ asset('removed.png') }}" />  Canceled projects</h2>
+        <table id="hor-minimalist-a">
+            <tr>
+                <th>subject</th>
+                <th>lecturer</th>
+                <th>entry date</th>
+                <th>change datet</th>
+                <th>comment</th>
+                <th>students</th>
+                <th>status</th>
+            </tr>
+            {% for project in project.canceled %}
+            <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
+            {% endfor %}
+        </table>
 
-<h2>Accepted projects</h2>
-<table border="1px solid">
-    <tr>
-        <th>subject</th>
-        <th>lecturer</th>
-        <th>entry date</th>
-        <th>change datet</th>
-        <th>comment</th>
-        <th>students</th>
-        <th>status</th>
-    </tr>
-    {% for project in project.accepted %}
-    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
-    {% endfor %}
-</table>
+</body>
+</html>
 
-<h2>Canceled projects</h2>
-<table border="1px solid">
-    <tr>
-        <th>subject</th>
-        <th>lecturer</th>
-        <th>entry date</th>
-        <th>change datet</th>
-        <th>comment</th>
-        <th>students</th>
-        <th>status</th>
-    </tr>
-    {% for project in project.canceled %}
-    <tr><td>{{ project.subject }} </td><td> {{ project.lecturer.name }} </td><td> {{ project.entryDate }}</td><td>{{ project.changeDate }}</td><td>{{ project.comment }}</td><td>{{ render(controller('PmsProjectsBundle:Topic:studentList',{'teamId':project.team.id })) }}</td><td>{{ project.status }}</td></tr>
-    {% endfor %}
-</table>
-
-<br/>
-<a href="{{ url('topic_add') }}">Dodaj projekt</a>
-
-{% endblock %}

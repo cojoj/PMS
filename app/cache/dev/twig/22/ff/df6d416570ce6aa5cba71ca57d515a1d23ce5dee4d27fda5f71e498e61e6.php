@@ -7,29 +7,30 @@ class __TwigTemplate_22ffdf6d416570ce6aa5cba71ca57d515a1d23ce5dee4d27fda5f71e498
     {
         parent::__construct($env);
 
-        $this->parent = false;
+        $this->parent = $this->env->loadTemplate("::base.html.twig");
 
         $this->blocks = array(
             'body' => array($this, 'block_body'),
         );
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doGetParent(array $context)
     {
-        // line 2
-        $this->displayBlock('body', $context, $blocks);
-        // line 6
-        echo "
-";
+        return "::base.html.twig";
     }
 
-    // line 2
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+    }
+
+    // line 3
     public function block_body($context, array $blocks = array())
     {
-        // line 3
+        // line 4
         echo "
     ";
-        // line 4
+        // line 5
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form');
         echo "
 ";
@@ -40,8 +41,13 @@ class __TwigTemplate_22ffdf6d416570ce6aa5cba71ca57d515a1d23ce5dee4d27fda5f71e498
         return "PmsProjectsBundle:Topic:actionForm.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  33 => 4,  30 => 3,  27 => 2,  22 => 6,  20 => 2,);
+        return array (  34 => 5,  31 => 4,  28 => 3,);
     }
 }

@@ -7,25 +7,30 @@ class __TwigTemplate_db7acc8a02aa3eb73aeded0f689fbfa46eeda52e32461c18753371ad904
     {
         parent::__construct($env);
 
-        $this->parent = false;
+        $this->parent = $this->env->loadTemplate("::base.html.twig");
 
         $this->blocks = array(
             'body' => array($this, 'block_body'),
         );
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doGetParent(array $context)
     {
-        // line 1
-        $this->displayBlock('body', $context, $blocks);
+        return "::base.html.twig";
     }
 
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+    }
+
+    // line 2
     public function block_body($context, array $blocks = array())
     {
-        // line 2
+        // line 3
         echo "
     ";
-        // line 3
+        // line 4
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form');
         echo "
 ";
@@ -36,8 +41,13 @@ class __TwigTemplate_db7acc8a02aa3eb73aeded0f689fbfa46eeda52e32461c18753371ad904
         return "PmsProjectsBundle:Topic:deleteForm.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  29 => 3,  26 => 2,  20 => 1,);
+        return array (  34 => 4,  31 => 3,  28 => 2,);
     }
 }

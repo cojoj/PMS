@@ -16,13 +16,14 @@ class __TwigTemplate_230080efee2183e57488e3883d2ceccb2f4fe3668cb773911bfd4f5a64f
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<ul>
+        echo "
+<ul>
 ";
-        // line 2
+        // line 3
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["students"]) ? $context["students"] : $this->getContext($context, "students")));
         foreach ($context['_seq'] as $context["_key"] => $context["student"]) {
-            // line 3
+            // line 4
             echo "    <li>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["student"]) ? $context["student"] : $this->getContext($context, "student")), "name"), "html", null, true);
             echo "</li>
@@ -31,7 +32,7 @@ class __TwigTemplate_230080efee2183e57488e3883d2ceccb2f4fe3668cb773911bfd4f5a64f
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['student'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 5
+        // line 6
         echo "</ul>";
     }
 
@@ -47,6 +48,6 @@ class __TwigTemplate_230080efee2183e57488e3883d2ceccb2f4fe3668cb773911bfd4f5a64f
 
     public function getDebugInfo()
     {
-        return array (  35 => 5,  26 => 3,  22 => 2,  19 => 1,);
+        return array (  36 => 6,  27 => 4,  23 => 3,  19 => 1,);
     }
 }

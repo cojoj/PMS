@@ -5,8 +5,9 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{ asset('style.css') }}" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <body bgcolor='#F0F0F0'>
         {% block body %}{% endblock %}
         
         <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>

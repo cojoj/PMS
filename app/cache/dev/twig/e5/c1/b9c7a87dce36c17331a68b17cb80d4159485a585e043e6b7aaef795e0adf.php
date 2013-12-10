@@ -35,18 +35,22 @@ class __TwigTemplate_e5c1b9c7a87dce36c17331a68b17cb80d4159485a585e043e6b7aaef795
         echo "        <link rel=\"icon\" type=\"image/x-icon\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("favicon.ico"), "html", null, true);
         echo "\" />
+        <link href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("style.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\" type=\"text/css\" />
     </head>
-    <body>
+    <body bgcolor='#F0F0F0'>
         ";
-        // line 10
-        $this->displayBlock('body', $context, $blocks);
         // line 11
+        $this->displayBlock('body', $context, $blocks);
+        // line 12
         echo "        
         <script src=\"http://code.jquery.com/jquery-2.0.3.min.js\"></script>
         ";
-        // line 13
-        $this->displayBlock('javascripts', $context, $blocks);
         // line 14
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 15
         echo "    </body>
 </html>
 ";
@@ -63,12 +67,12 @@ class __TwigTemplate_e5c1b9c7a87dce36c17331a68b17cb80d4159485a585e043e6b7aaef795
     {
     }
 
-    // line 10
+    // line 11
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 13
+    // line 14
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -85,6 +89,6 @@ class __TwigTemplate_e5c1b9c7a87dce36c17331a68b17cb80d4159485a585e043e6b7aaef795
 
     public function getDebugInfo()
     {
-        return array (  72 => 13,  67 => 10,  62 => 6,  50 => 14,  48 => 13,  44 => 11,  33 => 6,  23 => 1,  150 => 53,  145 => 50,  128 => 48,  124 => 47,  111 => 36,  94 => 34,  90 => 33,  77 => 22,  60 => 20,  56 => 5,  42 => 10,  38 => 6,  35 => 7,  29 => 5,);
+        return array (  76 => 14,  71 => 11,  66 => 6,  60 => 5,  54 => 15,  52 => 14,  48 => 12,  46 => 11,  40 => 8,  35 => 7,  33 => 6,  29 => 5,  23 => 1,);
     }
 }
